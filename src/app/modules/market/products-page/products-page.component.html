@@ -1,0 +1,12 @@
+<div style="display: flex; align-items: center; gap: 10px;">
+  <app-category-menu
+    [categories]="categories"
+    (categoryChanged)="onCategoryChanged($event)"
+  >
+  </app-category-menu>
+  <a routerLink="/register">Go to Register</a>
+</div>
+<app-product-list [products]="products"></app-product-list>
+
+
+                  

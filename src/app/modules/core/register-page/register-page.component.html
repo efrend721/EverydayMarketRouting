@@ -1,0 +1,163 @@
+<h2>Register</h2>
+<form #registerForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <!-- Name -->
+  <div>
+    <label for="name">Name:</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="user.name"
+      appNameValidator
+      required
+      #name="ngModel"
+      [class.invalid]="name.invalid && name.touched"
+    />
+    <div *ngIf="name.invalid && name.touched">
+      <small *ngIf="name.errors && name.errors['invalidName']">
+        {{ name.errors['invalidName'] }}
+      </small>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div>
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="user.email"
+      required
+      #email="ngModel"
+    />
+    <div *ngIf="email.invalid && email.touched">
+      <small *ngIf="email.errors && email.errors['invalidEmail']">
+        {{ email.errors['invalidEmail'] }}
+      </small>
+    </div>
+  </div>
+
+  <!-- Phone Number -->
+  <div>
+    <label for="phone">Phone Number:</label>
+    <input
+      type="text"
+      id="phone"
+      name="phone"
+      [(ngModel)]="user.phone"
+      appPhoneValidator
+      required
+      #phone="ngModel"
+      [class.invalid]="phone.invalid && phone.touched"
+    />
+    <div *ngIf="phone.invalid && phone.touched">
+      <small *ngIf="phone.errors && phone.errors['invalidPhone']">
+        {{ phone.errors['invalidPhone'] }}
+      </small>
+    </div>
+  </div>
+
+  <!-- Date of Birth -->
+  <div>
+    <label for="dob">Date of Birth:</label>
+    <input
+      type="date"
+      id="dob"
+      name="dob"
+      [(ngModel)]="user.dob"
+      required
+      #dob="ngModel"
+    />
+    <div *ngIf="dob.invalid && dob.touched">
+      <small *ngIf="dob.errors && dob.errors['invalidDob']">
+        {{ dob.errors['invalidDob'] }}
+      </small>
+    </div>
+  </div>
+
+  <!-- Street Address -->
+  <div>
+    <label for="address">Street Address:</label>
+    <input
+      type="text"
+      id="address"
+      name="address"
+      [(ngModel)]="user.address"
+      pattern="^[a-zA-Z0-9 ]+$"
+      required
+      #address="ngModel"
+    />
+    <div *ngIf="address.invalid && address.touched">
+      <small *ngIf="address.errors && address.errors['invalidAddress']">
+        {{ address.errors['invalidAddress'] }}
+      </small>
+    </div>
+  </div>
+
+  <!-- Province -->
+  <div>
+    <label for="province">Province:</label>
+    <select
+      id="province"
+      name="province"
+      [(ngModel)]="user.province"
+      required
+      #province="ngModel"
+    >
+      <option value="">Select a province</option>
+      <option *ngFor="let prov of provinces" [value]="prov">{{ prov }}</option>
+    </select>
+    <div *ngIf="province.invalid && province.touched">
+      <small *ngIf="province.errors && province.errors['invalidProvince']">
+        {{ province.errors['invalidProvince'] }}
+      </small>
+    </div>
+  </div>
+
+  <!-- Country -->
+  <div>
+    <label for="country">Country:</label>
+    <select
+      id="country"
+      name="country"
+      [(ngModel)]="user.country"
+      appCountryValidator
+      required
+      #country="ngModel"
+      [class.invalid]="country.invalid && country.touched"
+    >
+      <option value="">Select a country</option>
+      <option value="United States">United States</option>
+      <option value="Canada">Canada</option>
+    </select>
+    <div *ngIf="country.invalid && country.touched">
+      <small *ngIf="country.errors && country.errors['invalidCountry']">
+        {{ country.errors['invalidCountry'] }}
+      </small>
+    </div>
+  </div>
+
+  <!-- Terms and Conditions -->
+  <div>
+    <input
+      type="checkbox"
+      id="terms"
+      name="terms"
+      [(ngModel)]="user.terms"
+      required
+      #terms="ngModel"
+    />
+    <label for="terms">I accept the Terms & Conditions</label>
+    <div *ngIf="terms.invalid && terms.touched">
+      <small>You must accept the Terms & Conditions to proceed.</small>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div>
+    <button type="submit" [disabled]="registerForm.invalid">
+      Submit
+    </button>
+  </div>
+</form>

@@ -1,0 +1,61 @@
+/* Form table layout */
+form {
+  display: table;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Table rows with vertical spacing */
+form div {
+  display: table-row;
+  margin-bottom: 1rem; /* Increased vertical spacing between rows */
+}
+
+/* Label styling */
+form label {
+  display: table-cell;
+  text-align: left;
+  padding-right: 10px;
+  vertical-align: middle;
+  padding-bottom: 1rem; /* Space below labels */
+}
+
+/* Input/select fields styling */
+form input,
+form select {
+  display: table-cell;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 1rem; /* Space below inputs */
+}
+
+/* Checkbox specific styling */
+#terms {
+  display: inline-block;
+  margin-top: 1rem; /* Space above checkbox */
+}
+
+/* Checkbox container */
+.checkbox-container {
+  display: block;
+  margin: 0.5rem 0; /* vertical spacing around checkbox */
+}
+
+/* Submit button styling */
+button {
+  display: block;
+  margin-top: 1rem; /* Space above button */
+  width: auto;
+  padding: 0.5rem 1rem;
+}
+
+/* Validation styling */
+.invalid {
+  border: 2px solid red;
+}
+
+/* Error message spacing */
+small {
+  display: block;
+  margin-top: 0.5rem;
+}
